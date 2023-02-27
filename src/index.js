@@ -1,13 +1,15 @@
 import React from 'react';
 import  ReactDOM  from 'react-dom/client';
 import App from './App';
+import { AuthContexProvider } from './context/authContext';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
     <React.StrictMode>
-      <h1>hello functionup team this is  my first assignment</h1>
+        <AuthContexProvider>
         <App/>
+        </AuthContexProvider>
     </React.StrictMode>
 )
 

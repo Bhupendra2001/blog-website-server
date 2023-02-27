@@ -1,31 +1,72 @@
 
 import React from "react";
-import './App.css'
-class App extends React.Component {
-  constructor(){
-    super()
-    this.state = {
-      input :'',
-      showPara : false,
-    }
-  };
+import {createBrowserRouter , RouterProvider  ,Outlet} from "react-router-dom"
+import { Navbar } from "./components/Navbar";
+import Footer from "./components/Footer";
+import Register from "./pages/Register";
 
-  render(){
+import Write from "./pages/Write";
+import Home from "./pages/Home";
+import Single from "./pages/Single"
+import   "./style.scss"
+import LoginSample from "./pages/LoginSample";
 
-    return (
-      <div>
-        <textarea
-        value={this.state.input}
-        onChange={(e)=> this.setState({input : e.target.value})}/>
-        <br/>
-        <button
-        onClick={()=>{
-          this.setState({showPara : !this.state.showPara})
-        }} > Display in UpperCase</button>
-        {this.state.showPara && <p id="up">{this.state.input.toUpperCase()}</p>}
-      </div>
-    )
-  }
+function Layout(){
+  return(
+    <>
+     <Navbar/>
+     <Outlet/>
+     <Footer/>
+    </>
+  )
+}
+const router = createBrowserRouter([
+  {
+    path : "/",
+    element : <Layout/>,
+    children : [
+      {
+        path :"/",
+        element : <Home/>
+      },
+      {
+        path : "/post/:id",
+        element : <Single/>
+      },
+      {
+        path : "/write",
+        element : <Write/>
+      }
+    ]
+  },
+  {
+    path : "/register",
+    element : <Register/>,
+  },
+  {
+    path : "/login",
+    element : <LoginSample/>,
+  },
+  {
+    path : "/write",
+    element : <Write/>,
+  },
+  {
+    path : "/single",
+    element : <Single/>,
+  },
+])
+
+function App(){
+  return(
+  <div className="app">
+    <div className="container">
+    <RouterProvider router={router}/>
+    </div>
+  </div>
+   
+    
+  )
 }
 
 export default App;
