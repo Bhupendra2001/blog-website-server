@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     try{
 
-     await axios.post("/auth/register", inputs)
+     await axios.post("https://blog-server-xq36.onrender.com/api/auth/register", inputs)
     navigate('/login')
     }catch(err){
      setErr(err.response.data);

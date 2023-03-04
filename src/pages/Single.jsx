@@ -17,7 +17,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts/${postId}`);
+        const res = await axios.get(`https://blog-server-xq36.onrender.com/api/posts/${postId}`);
         setPost(res.data);
       } catch (err) {
         console.log(err);
@@ -28,7 +28,7 @@ const Single = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/posts/${postId}`);
+      await axios.delete(`https://blog-server-xq36.onrender.com/api/posts/${postId}`);
       navigate("/")
     } catch (err) {
       console.log(err);
@@ -39,7 +39,7 @@ const Single = () => {
       <div className='content'>
         <img src={post?.img} alt="" />
         <div className='user'>
-          {/* {post.userImg && <img src={post.userImg} alt="" />} */}
+          
           <div className='info'>
             <span>{post.username}</span>
             <p> posted {moment(post.date).fromNow()}</p>
@@ -50,6 +50,7 @@ const Single = () => {
               <Link to='/write?edit=2'> state={post}
                 <img alt="" />
               </Link>
+              <ion-icon name="close-circle-outline"></ion-icon>
               <img onClick={handleDelete} alt="" />
             </div>
           )}

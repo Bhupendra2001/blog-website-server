@@ -8,7 +8,7 @@ export const AuthContexProvider = ({children})=>{
     const [currentUser , setCurrentUser] = useState(JSON.parse(localStorage.getItem("user") || null))
 
     const login = async(inputs)=>{
-        const res = await axios.post("/auth/login", inputs)
+        const res = await axios.post("https://blog-server-xq36.onrender.com/api/auth/login", inputs)
         setCurrentUser(res.data)
     };
 

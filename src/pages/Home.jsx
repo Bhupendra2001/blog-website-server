@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(()=>{
     const fetchData = async () =>{
       try{
-        const res = await axios.get(`/posts${cat}`);
+        const res = await axios.get(`https://blog-server-xq36.onrender.com/api/posts${cat}`);
         setPosts(res.data);
       }catch(err){
         console.log(err);
