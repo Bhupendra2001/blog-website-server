@@ -11,7 +11,7 @@ section{
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background: url('back.jpg')no-repeat;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0z0sLAQxB5DLmw2pUBO7l_jwY7Wjb3t0U3A&usqp=CAU')no-repeat;
     background-position: center;
     background-size: 100%;
 
@@ -51,7 +51,8 @@ h2{
 }
 input:focus ~ label,
 input:valid ~ label{
-    top :-5px;
+   display: none;
+   background-color: aqua;
 }
 .inputbox input{
    width: 100%;
@@ -73,24 +74,8 @@ input:valid ~ label{
 
 }
 
-.forget {
-    margin: -15px 0 15px;
-    font-size: .9rm;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-}
 
-.forget label input{
-    margin-right: 3px;
-}
-.forget  a{
-    color: #fff;
-    text-decoration: none;
-}
-.forget label a:hover{
-    text-decoration: underline;
-}
+
 
 button{
     width: 100%;
@@ -114,14 +99,14 @@ button{
 
 .register p a{
     text-decoration: none;
-    color: #fff;
+    color: #c2ee14;
     font-weight: 600;
 }
 
 #a{
     margin: 5px;
     border: 2px solid white;
-    color: #fff;
+    color: #f10b0b;
     display: flex;
     text-align: center;
     justify-content: center;

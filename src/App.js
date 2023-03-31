@@ -1,72 +1,72 @@
-
 import React from "react";
-import {createBrowserRouter , RouterProvider  ,Outlet} from "react-router-dom"
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import Footer from "./components/Footer";
 import Register from "./pages/Register";
 
 import Write from "./pages/Write";
 import Home from "./pages/Home";
-import Single from "./pages/Single"
-import   "./style.scss"
+import Single from "./pages/Single";
+import "./style.scss";
 import LoginSample from "./pages/LoginSample";
+import Post from "./pages/Post";
 
-function Layout(){
-  return(
+function Layout() {
+  return (
     <>
-     <Navbar/>
-     <Outlet/>
-     <Footer/>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </>
-  )
+  );
 }
 const router = createBrowserRouter([
   {
-    path : "/",
-    element : <Layout/>,
-    children : [
+    path: "/",
+    element: <Layout />,
+    children: [
       {
-        path :"/",
-        element : <Home/>
+        path: "/",
+        element: <Home />,
       },
       {
-        path : "/post/:id",
-        element : <Single/>
+        path: "/post/:id",
+        element: <Single />,
       },
       {
-        path : "/write",
-        element : <Write/>
-      }
-    ]
+        path: "/write",
+        element: <Write />,
+      },
+    ],
   },
   {
-    path : "/register",
-    element : <Register/>,
+    path: "/register",
+    element: <Register />,
   },
   {
-    path : "/login",
-    element : <LoginSample/>,
+    path: "/login",
+    element: <LoginSample />,
   },
   {
-    path : "/write",
-    element : <Write/>,
+    path: "/write",
+    element: <Write />,
   },
   {
-    path : "/single",
-    element : <Single/>,
+    path: "/single",
+    element: <Single />,
   },
-])
+  {
+    path: "/create",
+    element: <Post />,
+  },
+]);
 
-function App(){
-  return(
-  <div className="app">
-    <div className="container">
-    <RouterProvider router={router}/>
+function App() {
+  return (
+    <div className="app">
+     <RouterProvider router={router} />
     </div>
-  </div>
-   
-    
-  )
+  );
 }
 
 export default App;
