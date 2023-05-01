@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import "./Post.css";
 import { AuthContext } from "../context/authContext";
 import Footer from "../components/Footer";
+import {Navbar} from '../components/Navbar'
 function Post() {
   const { currentUser } = useContext(AuthContext);
   const [title, setTitle] = useState("");
@@ -11,7 +12,7 @@ function Post() {
   const [img, setImg] = useState(null);
   const [date, setDate] = useState("");
 
-  if (currentUser) console.log(title + " " + descp + " " + date + " " + cat);
+ 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -19,22 +20,27 @@ function Post() {
     formData.append("descp", descp);
     formData.append("img", img);
     formData.append("cat", cat);
-    formData.append("uid", currentUser?.uid);
     formData.append("date", date);
     console.log(formData);
     try {
-      let res = await axios.post("/posts", formData, {
+      let res = await axios.post(`/posts/${currentUser?._doc._id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
+      
         },
       });
-      alert(res.data.data);
+      alert(res.data.message);
     } catch (err) {
-      alert(err.response.data);
+      alert(err.response.data.message);
     }
   };
+
+
   return (
     <div className="cont">
+      <div>
+        <Navbar/>
+      </div>
       <h1>Create Post</h1>
       <form>
         <input

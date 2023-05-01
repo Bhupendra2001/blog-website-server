@@ -1,35 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import moment from "moment";
+//import moment from "moment";
 
 const Write = () => {
-  const state = useLocation().state;
-  const [value, setValue] = useState(state?.descp || "");
+  const location = useLocation();
+  const postId = location.pathname.split("/")[2];
+  
+  const [value, setValue] = useState("");
   const [file, setFile] = useState(null);
-  const [title, setTitle] = useState(state?.title || "");
-  const [cat, setCat] = useState(state?.cat || "");
+  const [title, setTitle] = useState("");
+  const [cat, setCat] = useState("");
+
+  useEffect(() => {
+    axios.get(`/posts/${postId}`).then((res) => {
+      setValue(res.data.descp);
+      setTitle(res.data.title);
+      setCat(res.data.cat);
+    });
+  },[postId]);
 
   const handleClick = async (e) => {
     e.preventDefault();
-
     try {
-      state
-        ? await axios.put(`/posts/${state.id}`, {
+     
+         await axios.put(`/posts/${postId}`, {
             title,
             descp: value,
             cat,
             img: file ? file : "",
-          })
-        : await axios.post(`/posts/`, {
-            title,
-            descp: value,
-            cat,
-            img: file ? file : "",
-            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
           });
+
+          alert("successfully updated")
     } catch (err) {
       alert("some" + err.message);
     }

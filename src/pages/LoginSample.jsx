@@ -3,13 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import "./Login.css";
-import Write from "./Write";
+
 const LoginSample = () => {
   const [inputs, setInputs] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
+  console.log(inputs)
   const [err, setErr] = useState(null);
 
   const navigate = useNavigate();
@@ -40,24 +41,28 @@ const LoginSample = () => {
             <div className="inputbox">
               <ion-icon name="mail-outline"></ion-icon>
               <input
-                type="text"
-                placeholder="username"
-                name="username"
+                type="email"
+                placeholder="email"
+                name="email"
+                value={inputs.email}
                 onChange={handleChange}
                 required
               />
-              <label>username</label>
+              <label>Email</label>
             </div>
             <div className="inputbox">
-              <ion-icon name="lock-closed-outline"></ion-icon>
-              <input
+            
+              <ion-icon name="lock-open-outline"></ion-icon>
+              <input 
+                style={{width : "270px"}}
                 type="password"
                 placeholder="password"
                 name="password"
+                value={inputs.password}
                 onChange={handleChange}
                 required
               />
-              <label>password</label>
+              <label>Password</label>
             </div>
 
             <button onClick={handleSubmit}>log in</button>

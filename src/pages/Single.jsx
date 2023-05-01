@@ -4,7 +4,7 @@ import Menu from "../components/Menu";
 import axios from "axios";
 import moment from "moment";
 import { AuthContext } from "../context/authContext";
-
+//import logo from "../components/img/bhupendra.jpg";
 const Single = () => {
   const [post, setPost] = useState({});
 
@@ -19,7 +19,8 @@ const Single = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`/posts/${postId}`);
-        setPost(res.data);
+        //  console.log(res.data.data)
+        setPost(res.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -28,50 +29,48 @@ const Single = () => {
     fetchData();
   }, [postId]);
 
-  console.log(post.username);
   const handleDelete = async (props) => {
     try {
-      if (props.username !== post.username)
-        return alert("you only delete your  post", props.username);
-
-      let res = await axios.delete(`/posts/${postId}`);
-      alert(res);
+      let res = await axios.delete(`/posts/${postId}/${post.userId}`);
+      console.log(post.userId);
+      alert(res.data.message);
       navigate("/");
     } catch (err) {
-      alert("somthing is wrong");
+      alert(err.message);
     }
   };
   return (
     <div className="single">
       <div className="content">
-        <img src={post.img} alt="" />
+        <img style={{ margin: "30px"}} src={post.img} alt="" />
         <div className="user">
+   
+        <h1> {post.title}</h1>
+        <h4> {post.descp}</h4>
           <div className="info">
-            <span>{post.username}</span>
             <p> posted {moment(post.date).fromNow()}</p>
           </div>
 
-          {currentUser.username === post.username && (
-            <div className="edit">
-              <Link to="/write?edit=2">
-                {" "}
-                state={post.username}
-                <img src={currentUser.img} alt="" />
-              </Link>
-            </div>
-          )}
+          <div className="edit">
+            <Link to={`/update/${post._id}/${post.userId}`} state={post.userId}>
+            <ion-icon name="create-outline"></ion-icon>
+              {/* <img src={logo} alt="" /> */}
+            </Link>
+          </div>
+          {/* {currentUser._doc.username === post.username && (
+            )}  */}
 
-          {currentUser !== null && (
+          
+         
+          {currentUser && (
             <ion-icon
-              value={currentUser.username}
+              style={{ color: "red" }}
+              value={currentUser._doc.username}
               onClick={handleDelete}
               name="trash-outline"
             ></ion-icon>
           )}
-          <ion-icon name="close-circle-outline"></ion-icon>
         </div>
-        <h1> {post.title}</h1>
-        {post.descp}
       </div>
       <Menu cat={post.cat} />
     </div>

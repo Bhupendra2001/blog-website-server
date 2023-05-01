@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 const Register = () => {
   const [inputs, setInputs] = useState({
     username: "",
@@ -29,27 +30,51 @@ const Register = () => {
     <div className="auth">
       <h1>Register</h1>
       <form>
+
+        <div>
         <input
-          required
+         style={{width : "340px"}}
+         
           type="text"
           placeholder="username"
           name="username"
+          required
           onChange={handleChange}
         />
+        <ion-icon
+        style={{color : "#13f9d6" , fontSize : "24px"}}
+         name="person-add"></ion-icon>
+        </div>
+
+        <div>
         <input
-          required
+         style={{width : "340px"}}
           type="email"
+          required
           placeholder="email"
           name="email"
           onChange={handleChange}
         />
+        <ion-icon
+         style={{color : "#13f9d6" , fontSize : "24px"}}
+        name="mail-outline"></ion-icon>
+        </div>
+
+        <div>
+
         <input
-          required
+         style={{width : "340px"}}
           type="password"
+          required
           placeholder="password"
           name="password"
           onChange={handleChange}
+          
         />
+        <ion-icon 
+         style={{color : "#13f9d6" , fontSize : "24px"}}
+        name="lock-closed-outline"></ion-icon>
+        </div>
         <button onClick={handleSubmit}>Register</button>
         {err && <p> {err}</p>}
 

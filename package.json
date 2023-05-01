@@ -14,7 +14,7 @@
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.57.1",
+    "scss": "^0.2.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,5 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8800/api/"
+  "proxy": "http://localhost:4000/api/"
 }

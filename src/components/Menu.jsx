@@ -8,7 +8,7 @@ const Menu = ({cat}) => {
       const fetchData = async () => {
         try{
         const res = await axios.get(`/posts/?cat=${cat}`);
-        setPosts(res.data);
+        setPosts(res.data.data);
         }catch(err){
           console.log(err)
         }

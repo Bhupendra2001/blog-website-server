@@ -28,10 +28,10 @@
   margin: auto;
   margin-top: 100px;
   margin-bottom: 100px;
-  background-color: transparent;
+  background : url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1tmu1OnlnWb2wfIBJj_m20KaAH2AgF0Kb83dAcR5mUw&s');
   border-radius: 20px;
   background-size: cover;
-  opacity: 0.5;
+  opacity: 0.9;
 }
 .cont form label {
   color: aqua;

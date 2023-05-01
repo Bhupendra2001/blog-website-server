@@ -13,9 +13,10 @@ export const AuthContexProvider = ({ children }) => {
     setCurrentUser(res.data);
   };
 
-  const logout = async (inputs) => {
+  const logout = async (nevigate) => {
     await axios.post("/auth/logout");
     setCurrentUser(null);
+    nevigate('/login')
   };
 
   useEffect(() => {
