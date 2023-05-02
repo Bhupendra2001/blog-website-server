@@ -23,7 +23,7 @@ function Post() {
     formData.append("date", date);
     console.log(formData);
     try {
-      let res = await axios.post(`/posts/${currentUser?._doc._id}`, formData, {
+      let res = await axios.post(`https://blog-website-server-henna.vercel.app/api/posts/${currentUser?._doc._id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
       
