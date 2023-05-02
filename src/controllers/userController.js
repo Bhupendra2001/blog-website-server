@@ -51,6 +51,7 @@ const login = async (req, res) => {
     const token = jwt.sign({ userId: user._id }, key);
     const { password, ...other } = user;
 
+    
     return res
       .cookie(cookies, token, { httpOnly: true })
       .status(200)
