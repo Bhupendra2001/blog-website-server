@@ -4,9 +4,11 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import {useParams} from 'react-router-dom'
 import { AuthContext } from "../context/authContext";
-const { currentUser } = useContext(AuthContext);
+
 
 export const UpdateBlog = () => {
+
+const { currentUser } = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [cat, setCat] = useState("");
   const [img, setImg] = useState(null);
@@ -24,7 +26,7 @@ export const UpdateBlog = () => {
     formData.append("img" , img)
    console.log(formData)
    try{
-    let res = await axios.patch(`https://blog-website-server-henna.vercel.app/api/posts/${blogId}/${userId}` , formData , {
+    let res = await axios.patch(`https://blog-website-server-mongo.vercel.app/api/posts/${blogId}/${userId}` , formData , {
         headers: {
             "Content-Type": "multipart/form-data",
              "Authorization" : `Barear  ${currentUser?.token}`
