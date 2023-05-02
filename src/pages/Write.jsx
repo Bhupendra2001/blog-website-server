@@ -15,7 +15,7 @@ const Write = () => {
   const [cat, setCat] = useState("");
 
   useEffect(() => {
-    axios.get(`https://blog-website-server-henna.vercel.app/api/posts/${postId}`).then((res) => {
+    axios.get(`https://blog-website-server-mongo.vercel.app/api/posts/${postId}`).then((res) => {
       setValue(res.data.descp);
       setTitle(res.data.title);
       setCat(res.data.cat);
@@ -26,7 +26,7 @@ const Write = () => {
     e.preventDefault();
     try {
      
-         await axios.put(`https://blog-website-server-henna.vercel.app/api/posts/${postId}`, {
+         await axios.patch(`https://blog-website-server-mongo.vercel.app/api/posts/${postId}`, {
             title,
             descp: value,
             cat,
