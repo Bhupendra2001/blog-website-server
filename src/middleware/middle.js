@@ -5,11 +5,11 @@ const postModel = require('../models/postModel')
 const key = process.env.Secret;
 const Authenticated = (req, res, next) => {
 
-    const token = req.cookies.access_token;
-    console.log(token)
+    let token = req.headers['authorization'];
+  
     if(!token)   return res.status(400).send({ status: false, message: "token is not present" })
 console.log("hello world")
-    //token = header.slice(7)
+    token = token.slice(8)
    
     jwt.verify(token , key , (err, decoded)=>{
         if(err){
