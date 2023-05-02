@@ -18,7 +18,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts/${postId}`);
+        const res = await axios.get(`https://blog-website-server-henna.vercel.app/api/posts/${postId}`);
         //  console.log(res.data.data)
         setPost(res.data.data);
       } catch (err) {
@@ -31,7 +31,7 @@ const Single = () => {
 
   const handleDelete = async (props) => {
     try {
-      let res = await axios.delete(`/posts/${postId}/${post.userId}`);
+      let res = await axios.delete(`https://blog-website-server-henna.vercel.app/api/posts/${postId}/${post.userId}`);
       console.log(post.userId);
       alert(res.data.message);
       navigate("/");
