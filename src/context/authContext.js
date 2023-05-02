@@ -9,12 +9,12 @@ export const AuthContexProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post("/auth/login", inputs);
+    const res = await axios.post("https://blog-website-server-henna.vercel.app/api/auth/login", inputs);
     setCurrentUser(res.data);
   };
 
   const logout = async (nevigate) => {
-    await axios.post("/auth/logout");
+    await axios.post("https://blog-website-server-henna.vercel.app/api/auth/logout");
     setCurrentUser(null);
     nevigate('/login')
   };
