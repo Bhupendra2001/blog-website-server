@@ -18,7 +18,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://blog-website-server-henna.vercel.app/api/posts/${postId}`);
+        const res = await axios.get(`https://blog-website-server-mongo.vercel.app/api/posts/${postId}`);
         //  console.log(res.data.data)
         setPost(res.data.data);
       } catch (err) {
@@ -31,7 +31,7 @@ const Single = () => {
 
   const handleDelete = async (props) => {
     try {
-      let res = await axios.delete(`https://blog-website-server-henna.vercel.app/api/posts/${postId}/${post.userId}` ,
+      let res = await axios.delete(`https://blog-website-server-mongo.vercel.app/api/posts/${postId}/${post.userId}` ,
       {  headers : { 'Authorization' : `Barear  ${currentUser?.token}`} }
       );
       console.log(post.userId);
@@ -59,7 +59,7 @@ const Single = () => {
               {/* <img src={logo} alt="" /> */}
             </Link>
           </div>
-          {/* {currentUser.username === post.username && (
+          {/* {currentUser?.username === post.username && (
             )}  */}
 
           
@@ -67,7 +67,7 @@ const Single = () => {
           {currentUser && (
             <ion-icon
               style={{ color: "red" }}
-              value={currentUser.username}
+              value={currentUser?.username}
               onClick={handleDelete}
               name="trash-outline"
             ></ion-icon>
