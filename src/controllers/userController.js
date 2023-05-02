@@ -51,10 +51,16 @@ const login = async (req, res) => {
     const token = jwt.sign({ userId: user._id }, key);
     const { password, ...other } = user;
 
+    const Result = {
+      username : user.username,
+      email : user.email ,
+      _id : user._id ,
+      token : token
+    }
     return res
       .cookie(cookies, token, { httpOnly: true })
       .status(200)
-      .send(other);
+      .send(Result);
   } catch (err) {
     return res.status(500).send(err.message);
   }
