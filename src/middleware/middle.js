@@ -4,7 +4,7 @@ require("dotenv").config();
 const postModel = require("../models/postModel");
 const key = process.env.Secret;
 const Authenticated = (req, res, next) => {
-  const token = req.headers["authorization"];
+  let token = req.headers["authorization"];
 
   console.log(token);
   if (!token)
