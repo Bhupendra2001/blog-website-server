@@ -31,7 +31,9 @@ const Single = () => {
 
   const handleDelete = async (props) => {
     try {
-      let res = await axios.delete(`https://blog-website-server-henna.vercel.app/api/posts/${postId}/${post.userId}`);
+      let res = await axios.delete(`https://blog-website-server-henna.vercel.app/api/posts/${postId}/${post.userId}` ,
+      {  headers : { 'Authorization' : `Barear  ${currentUser?.token}`} }
+      );
       console.log(post.userId);
       alert(res.data.message);
       navigate("/");
@@ -57,7 +59,7 @@ const Single = () => {
               {/* <img src={logo} alt="" /> */}
             </Link>
           </div>
-          {/* {currentUser._doc.username === post.username && (
+          {/* {currentUser.username === post.username && (
             )}  */}
 
           
@@ -65,7 +67,7 @@ const Single = () => {
           {currentUser && (
             <ion-icon
               style={{ color: "red" }}
-              value={currentUser._doc.username}
+              value={currentUser.username}
               onClick={handleDelete}
               name="trash-outline"
             ></ion-icon>
