@@ -22,7 +22,7 @@ export const UpdateBlog = () => {
     formData.append("img" , img)
    console.log(formData)
    try{
-    let res = await axios.patch(`/posts/${blogId}/${userId}` , formData , {
+    let res = await axios.patch(`https://blog-website-server-henna.vercel.app/api/posts/${blogId}/${userId}` , formData , {
         headers: {
             "Content-Type": "multipart/form-data",
           },
