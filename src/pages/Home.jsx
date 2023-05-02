@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://blog-website-server-henna.vercel.app/api/posts${cat}`);
+        const res = await axios.get(`https://blog-website-server-mongo.vercel.app/api/posts${cat}`);
         setPosts(res.data.data);
       } catch (err) {
         console.log(err);
@@ -34,7 +34,7 @@ const Home = () => {
                 <p style={{color : "brown"}}>{post.descp}</p>
                 <span>posted {moment(post.date).fromNow()}</span>
                 <p>{post.cat}</p>
-                {currentUser._doc._id === post.userId && (
+                {currentUser?._id === post.userId && (
                   <Link className="link" to={`/post/${post._id}`}>
                     <button> Read More</button>
                   </Link>
