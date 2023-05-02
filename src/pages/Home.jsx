@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts${cat}`);
+        const res = await axios.get(`https://blog-website-server-henna.vercel.app/api/posts${cat}`);
         setPosts(res.data.data);
       } catch (err) {
         console.log(err);
