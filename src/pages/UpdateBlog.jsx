@@ -28,6 +28,7 @@ const { currentUser } = useContext(AuthContext);
    try{
     let res = await axios.patch(`https://blog-website-server-mongo.vercel.app/api/posts/${blogId}/${userId}` , formData , {
         headers: {
+        
             "Content-Type": "multipart/form-data",
              "Authorization" : `Barear  ${currentUser?.token}`
           },
