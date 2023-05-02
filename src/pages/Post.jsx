@@ -26,7 +26,7 @@ function Post() {
       let res = await axios.post(`https://blog-website-server-henna.vercel.app/api/posts/${currentUser?._doc._id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-      
+          "Authorization" : `Bearer  ${currentUser?.token}`
         },
       });
       alert(res.data.message);
