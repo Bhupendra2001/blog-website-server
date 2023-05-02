@@ -34,7 +34,7 @@ function Dropdown() {
                   name="person-circle-outline"
                 ></ion-icon>
 
-                <p >{currentUser?._doc.username}</p>
+                <p >{currentUser?.username}</p>
               </li>
             </ul>
 
@@ -51,7 +51,7 @@ function Dropdown() {
                   style={{ color: "blue", fontSize: "30px" }}
                   name="mail-unread-outline"
                 ></ion-icon>
-                <p>{currentUser?._doc.email}</p>
+                <p>{currentUser?.email}</p>
               </li>
             </ul>
 
