@@ -49,13 +49,18 @@ const login = async (req, res) => {
     if (!CheckPassword) return res.status(400).send("Wrong email or password");
 
     const token = jwt.sign({ userId: user._id }, key);
-    const { password, ...other } = user;
+    // const { password, ...other } = user;
 
-    
+    const result = {
+      username : user.username ,
+      email : user.email ,
+      token  : token ,
+      _id : user._id
+    }
     return res
       .cookie(cookies, token, { httpOnly: true })
       .status(200)
-      .send(other);
+      .send(result);
   } catch (err) {
     return res.status(500).send(err.message);
   }
