@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
 import "./Update.css";
 import Footer from "../components/Footer";
 import axios from "axios";
 import {useParams} from 'react-router-dom'
+import { AuthContext } from "../context/authContext";
+const { currentUser } = useContext(AuthContext);
 
 export const UpdateBlog = () => {
   const [title, setTitle] = useState("");
@@ -25,6 +27,7 @@ export const UpdateBlog = () => {
     let res = await axios.patch(`https://blog-website-server-henna.vercel.app/api/posts/${blogId}/${userId}` , formData , {
         headers: {
             "Content-Type": "multipart/form-data",
+             "Authorization" : `Barear  ${currentUser?.token}`
           },
     })
   alert(res.data.message)
