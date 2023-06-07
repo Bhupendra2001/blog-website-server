@@ -4,6 +4,7 @@ const { login, register, logout } = require('./controllers/userController')
 const { CreatePost , getPost , getPosts , updatePost , deletePost} = require('./controllers/postController')
 const { Authenticated , Authorization  } = require('./middleware/middle')
 
+
 //-------------------User APIs---------------------//
 
 

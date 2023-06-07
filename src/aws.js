@@ -1,9 +1,11 @@
 const aws = require("aws-sdk");
 
+require("dotenv").config();
+
 aws.config.update({
-  accessKeyId: "AKIAY3L35MCRZNIRGT6N",
-  secretAccessKey: "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",
-  region: "ap-south-1",
+  accessKeyId: process.env.AccessKeyId,
+  secretAccessKey: process.env.SecretAccessKey,
+  region: process.env.Region,
 });
 
 let uploadFile = async (file) => {
@@ -11,9 +13,9 @@ let uploadFile = async (file) => {
     let s3 = new aws.S3({ apiVersion: "2006-03-01" });
 
     var uploadParams = {
-      ACL: "public-read",
-      Bucket: "classroom-training-bucket",
-      Key: "project5/" + file.originalname,
+      //ACL: "public-read",
+      Bucket: "namdev-2023-bucket",
+      Key: "blog-website/" + file.originalname,
       Body: file.buffer,
     };
 
